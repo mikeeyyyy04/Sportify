@@ -1,0 +1,51 @@
+# Build outputs
+*.apk
+*.aab
+build/
+*.iml
+
+# Large model files (too big for GitHub)
+*.h5
+*.tflite
+
+# Log files
+*.log
+hs_err_pid*.log
+replay_pid*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local properties
+local.properties
+*.local
+
+# Android build files
+**/.cxx/
+android/local.properties
+sportify/android/.cxx/
+sportify/android/app/.cxx/
+
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+

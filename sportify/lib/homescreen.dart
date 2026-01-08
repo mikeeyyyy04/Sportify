@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sportify/badminton.dart';
 import 'package:sportify/basketball.dart';
+import 'package:sportify/camera_screen.dart';
 import 'package:sportify/chess.dart';
 import 'package:sportify/cycling.dart';
 import 'package:sportify/searchscreen.dart';
@@ -9,7 +10,28 @@ import 'package:sportify/table_tennis.dart';
 import 'package:sportify/tennis.dart';
 import 'package:sportify/volleyball.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    if (index == 1) {
+      // Navigate to CameraScreen when "Diagnose" is tapped
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CameraScreen()),
+      );
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,10 +130,16 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.camera_alt), label: 'Diagnose'),
+            icon: Icon(Icons.camera_alt),
+            label: 'Diagnose',
+            activeIcon: Icon(Icons.camera_alt,
+                color: Color.fromARGB(255, 172, 173, 172)),
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_florist), label: 'My Garden'),
           BottomNavigationBarItem(

@@ -73,46 +73,55 @@ class Intropage extends StatelessWidget {
               // Spacer
               Expanded(child: Container()),
 
-              // Scan icon and text with shadow
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                },
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color:
-                                Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 10,
-                            offset: Offset(0, 3), // changes position of shadow
+              // Scan button - made more prominent
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 18.0),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 255, 153, 0),
+                      borderRadius: BorderRadius.circular(30.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 8,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.qr_code_scanner,
+                          size: 32,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 12),
+                        Text(
+                          'TAP TO SCAN',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            letterSpacing: 1.2,
                           ),
-                        ],
-                      ),
-                      child: Icon(
-                        Icons.qr_code_scanner,
-                        size: 50,
-                        color: Color.fromARGB(255, 255, 153, 0),
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      'scan',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 40),
             ],
           ),
         ],
